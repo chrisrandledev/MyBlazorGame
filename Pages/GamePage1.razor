@@ -1,0 +1,69 @@
+﻿@page "/gamepage1"
+@using MyBlazorGame.Data
+@inject Game1Service GameService
+
+<PageTitle>Blazor Game 1 Proof-of-Concept</PageTitle>
+
+<h1>Game 1</h1>
+
+<link href="css/game1styles.css" rel="stylesheet" />
+
+<p>Demonstration of a game (i.e. an event driven application) running through Blazor.</p>
+
+@if (game == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+	<table>
+		<tr class="header">
+			<td colspan="4">Inventory</td>
+		</tr>
+		<tr class="items">
+			<td>
+				<img src="http://dblots.pl/images/accmaker/pictures/items/brolly%20talisman.png" alt="">
+			</td>
+			<td>
+				<img src="http://images-mediawiki-sites.thefullwiki.org/05/3/9/2/67526373557123740.gif">
+			</td>
+			<td>
+				<img src="http://theheroesoftime.com/images/items/2664.gif">
+			</td>
+			<td></td>
+		</tr>
+		<tr class="items">
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr class="items">
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr class="items">
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+}
+
+@code {
+    private Game1 game;
+
+    protected override async Task OnInitializedAsync()
+    {
+        game = await GameService.GetGameAsync();
+    }
+}
